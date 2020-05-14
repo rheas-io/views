@@ -1,10 +1,10 @@
 {
-  "name": "@laress/views",
+  "name": "@rheas/views",
   "version": "0.0.1",
-  "description": "Laress view renderer and a basic layout file for SPA",
+  "description": "Rheas view renderer and a basic layout file for SPA",
   "main": "index.js",
   "keywords": [
-    "laress",
+    "rheas",
     "express",
     "framework",
     "nodejs",
@@ -19,9 +19,9 @@
     "tsc": "tsc",
     "test": "jest",
     "coverage": "jest --coverage",
-    "copypackage": "cp -rf package.json build/src",
+    "copypackage": "cp -rf package.json build",
     "build": "tsc && npm run copypackage",
-    "copypackage_dev": "cp -rf package.json build_dev/src",
+    "copypackage_dev": "cp -rf package.json build_dev",
     "build-dev": "tsc --outDir ./build_dev && npm run copypackage_dev"
   },
   "devDependencies": {
@@ -33,12 +33,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/laress-io/views.git"
+    "url": "git+https://github.com/rheas-io/views.git"
   },
   "author": "Kalesh Kaladharan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/laress-io/views/issues"
+    "url": "https://github.com/rheas-io/views/issues"
   },
-  "homepage": "https://github.com/laress-io/views#readme"
+  "homepage": "https://github.com/rheas-io/views#readme"
 }
