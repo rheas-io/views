@@ -27,6 +27,7 @@
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.2",
+    "@types/pug": "^2.0.4",
     "jest": "^25.4.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
@@ -40,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/rheas-io/views/issues"
   },
-  "homepage": "https://github.com/rheas-io/views#readme"
+  "homepage": "https://github.com/rheas-io/views#readme",
+  "dependencies": {
+    "pug": "^2.0.4"
+  }
 }
