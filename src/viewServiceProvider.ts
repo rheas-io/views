@@ -1,14 +1,20 @@
-import { ViewHandler } from "./viewHandler";
-import { ServiceProvider } from "@rheas/core";
+import { ViewFactory } from "./viewFactory";
+import { IApp } from "@rheas/contracts/core";
+import { DeferredServiceProvider } from "@rheas/core";
 
-export class ViewServiceProvider extends ServiceProvider {
+export class ViewServiceProvider extends DeferredServiceProvider {
 
     /**
-     * Registers view handlers. Rheas uses pug as its engine.
+     * Registers view handlers when a node receives a new request.
+     * The container will be the request instance.
      */
     public register() {
-        this.app.singleton('view', function (app) {
-            return new ViewHandler(app);
+        this.container.singleton(this.serviceName(), request => {
+            const app: IApp = request.get('app');
+
+            const viewFactory: ViewFactory = app.get('view');
+
+            return viewFactory.createNewView();
         });
     }
 }
