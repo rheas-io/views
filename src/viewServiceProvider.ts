@@ -9,7 +9,7 @@ export class ViewServiceProvider extends DeferredServiceProvider {
      * The container will be the request instance.
      */
     public register() {
-        this.container.singleton(this.serviceName(), request => {
+        this.container.singleton(this.name, request => {
             const app: IApp = request.get('app');
 
             const viewFactory: ViewFactory = app.get('view');

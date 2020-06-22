@@ -9,7 +9,7 @@ export class ViewFactoryServiceProvider extends DeferredServiceProvider {
      * app instance.
      */
     public register() {
-        this.container.singleton(this.serviceName(), app => {
+        this.container.singleton(this.name, app => {
             return new ViewFactory(app);
         });
     }

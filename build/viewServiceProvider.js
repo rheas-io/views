@@ -24,7 +24,7 @@ var ViewServiceProvider = /** @class */ (function (_super) {
      * The container will be the request instance.
      */
     ViewServiceProvider.prototype.register = function () {
-        this.container.singleton(this.serviceName(), function (request) {
+        this.container.singleton(this.name, function (request) {
             var app = request.get('app');
             var viewFactory = app.get('view');
             return viewFactory.createNewView();

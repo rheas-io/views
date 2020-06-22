@@ -26,7 +26,7 @@ var ViewFactoryServiceProvider = /** @class */ (function (_super) {
      * app instance.
      */
     ViewFactoryServiceProvider.prototype.register = function () {
-        this.container.singleton(this.serviceName(), function (app) {
+        this.container.singleton(this.name, function (app) {
             return new viewFactory_1.ViewFactory(app);
         });
     };
