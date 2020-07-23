@@ -1,4 +1,4 @@
-import { DeferredServiceProvider } from "@rheas/core";
+import { DeferredServiceProvider } from "@rheas/services";
 export declare class ViewFactoryServiceProvider extends DeferredServiceProvider {
     /**
      * Registers view factory on the application. This factory is responsible
