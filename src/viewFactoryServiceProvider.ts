@@ -1,5 +1,5 @@
 import { ViewFactory } from "./viewFactory";
-import { DeferredServiceProvider } from "@rheas/core";
+import { DeferredServiceProvider } from "@rheas/services";
 
 export class ViewFactoryServiceProvider extends DeferredServiceProvider {
 

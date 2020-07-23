@@ -1,6 +1,6 @@
 import { ViewFactory } from "./viewFactory";
-import { IApp } from "@rheas/contracts/core";
-import { DeferredServiceProvider } from "@rheas/core";
+import { app } from "@rheas/support/helpers";
+import { DeferredServiceProvider } from "@rheas/services";
 
 export class ViewServiceProvider extends DeferredServiceProvider {
 
@@ -10,9 +10,7 @@ export class ViewServiceProvider extends DeferredServiceProvider {
      */
     public register() {
         this.container.singleton(this.name, request => {
-            const app: IApp = request.get('app');
-
-            const viewFactory: ViewFactory = app.get('view');
+            const viewFactory: ViewFactory = app().get('view');
 
             return viewFactory.createNewView();
         });
