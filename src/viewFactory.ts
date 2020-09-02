@@ -1,37 +1,36 @@
-import { View } from "./view";
-import { Str } from "@rheas/support";
-import { AnyObject } from "@rheas/contracts";
-import { IContainer } from "@rheas/contracts/container";
+import { View } from './view';
+import { Str } from '@rheas/support';
+import { AnyObject } from '@rheas/contracts';
+import { IContainer } from '@rheas/contracts/container';
 
 export class ViewFactory {
-
     /**
      * The app container instance.
-     * 
+     *
      * @var IContainer
      */
     protected app: IContainer;
 
     /**
      * The data that is shared between different request views.
-     * 
+     *
      * @var AnyObject
      */
     protected data: AnyObject = {};
 
     /**
-     * Sets the source directory from where view files has to be 
+     * Sets the source directory from where view files has to be
      * referenced.
-     * 
+     *
      * @var string
      */
     protected srcDir: string;
 
     /**
-     * Creates a view factory that is responsible for creation of 
+     * Creates a view factory that is responsible for creation of
      * views.
-     * 
-     * @param app 
+     *
+     * @param app
      */
     constructor(app: IContainer) {
         this.app = app;
@@ -41,8 +40,8 @@ export class ViewFactory {
 
     /**
      * Creates a new view handler for each request.
-     * 
-     * @param request 
+     *
+     * @param request
      */
     public createNewView(): View {
         return new View(this.srcDir, this.data);
@@ -50,8 +49,8 @@ export class ViewFactory {
 
     /**
      * Sets the view files directory.
-     * 
-     * @param srcDir 
+     *
+     * @param srcDir
      */
     public setViewsDirectory(srcDir: string): string {
         this.srcDir = '/' + Str.path(srcDir);
@@ -62,9 +61,9 @@ export class ViewFactory {
     /**
      * Sets a key value data that has to be shared across different
      * views.
-     * 
-     * @param key 
-     * @param data 
+     *
+     * @param key
+     * @param data
      */
     public share(key: string, data: any) {
         this.data[key] = data;

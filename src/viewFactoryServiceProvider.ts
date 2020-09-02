@@ -1,15 +1,14 @@
-import { ViewFactory } from "./viewFactory";
-import { DeferredServiceProvider } from "@rheas/services";
+import { ViewFactory } from './viewFactory';
+import { DeferredServiceProvider } from '@rheas/services';
 
 export class ViewFactoryServiceProvider extends DeferredServiceProvider {
-
     /**
      * Registers view factory on the application. This factory is responsible
-     * for creating a view handler for each request. The container will be the 
+     * for creating a view handler for each request. The container will be the
      * app instance.
      */
     public register() {
-        this.container.singleton(this.name, app => {
+        this.container.singleton(this.name, (app) => {
             return new ViewFactory(app);
         });
     }
