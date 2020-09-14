@@ -1,7 +1,6 @@
 import { View } from './view';
 import { Str } from '@rheas/support';
 import { AnyObject } from '@rheas/contracts';
-import { IContainer } from '@rheas/contracts/container';
 import { IView, IViewFactory } from '@rheas/contracts/views';
 
 export class ViewFactory implements IViewFactory {
@@ -22,21 +21,22 @@ export class ViewFactory implements IViewFactory {
 
     /**
      * Creates a view factory that is responsible for creation of
-     * views.
+     * views. Applications default views directory is sent as the srcDir.
+     * Usually the value is {projectDir}/resources/views
      *
-     * @param app
+     * @param string
      */
-    constructor(app: IContainer) {
-        this.srcDir = this.setSourceDirectory(app.get('path.views')).sourceDir();
+    constructor(srcDir: string) {
+        this.srcDir = Str.path(srcDir, true);
     }
 
     /**
      * Creates a new view handler for each request.
      *
-     * @param request
+     * @param srcDir
      */
-    public createNewView(): IView {
-        return new View(this.srcDir, this.data);
+    public createNewView(srcDir: string = this.srcDir): IView {
+        return new View(srcDir, this.data);
     }
 
     /**
@@ -46,7 +46,7 @@ export class ViewFactory implements IViewFactory {
      * @param srcDir
      */
     public setSourceDirectory(srcDir: string): IViewFactory {
-        this.srcDir = '/' + Str.path(srcDir);
+        this.srcDir = Str.path(srcDir, true);
 
         return this;
     }

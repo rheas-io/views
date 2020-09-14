@@ -28,7 +28,7 @@ export class View implements IView {
     constructor(srcDir: string, shared: AnyObject = {}) {
         this.data = Object.assign({}, shared);
 
-        this.srcDir = '/' + Str.path(srcDir);
+        this.srcDir = Str.path(srcDir, true);
     }
 
     /**
@@ -47,18 +47,20 @@ export class View implements IView {
 
     /**
      * Gets the complete view file path from the views directory. The argument
-     * can be a regular file path with extension or a dotted file path.
+     * can be a regular file path with/without extension or a dotted file path
+     * in the view source directory. The file path will be resolved from this
+     * view object's source directory.
      *
-     * For example, to access index.pug, user just have to call view('index');
-     * If index is in an email dir within the root views dir, user should call
-     * it by view(email.index)
+     * To access `index.pug` in this view's srcDir, user could call `view('index')`
+     * If index is in an email dir within the root views dir, user could call
+     * it by `view('email.index')`
      *
-     * @param dottedPath
+     * @param filePath
      */
-    public getViewFilePath(dottedPath: string): string {
-        dottedPath = Str.trimEnd(Str.dottedPath(dottedPath), '.pug');
+    public getViewFilePath(filePath: string): string {
+        filePath = Str.trimEnd(Str.dottedPath(filePath), '.pug');
 
-        const fileSplit = dottedPath.split('.');
+        const fileSplit = filePath.split('.');
 
         return path.resolve(this.srcDir, ...fileSplit) + '.pug';
     }
