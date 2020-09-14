@@ -2,22 +2,9 @@ import { View } from './view';
 import { Str } from '@rheas/support';
 import { AnyObject } from '@rheas/contracts';
 import { IContainer } from '@rheas/contracts/container';
+import { IView, IViewFactory } from '@rheas/contracts/views';
 
-export class ViewFactory {
-    /**
-     * The app container instance.
-     *
-     * @var IContainer
-     */
-    protected app: IContainer;
-
-    /**
-     * The data that is shared between different request views.
-     *
-     * @var AnyObject
-     */
-    protected data: AnyObject = {};
-
+export class ViewFactory implements IViewFactory {
     /**
      * Sets the source directory from where view files has to be
      * referenced.
@@ -27,15 +14,20 @@ export class ViewFactory {
     protected srcDir: string;
 
     /**
+     * The data that is shared between different request views.
+     *
+     * @var AnyObject
+     */
+    protected data: AnyObject = {};
+
+    /**
      * Creates a view factory that is responsible for creation of
      * views.
      *
      * @param app
      */
     constructor(app: IContainer) {
-        this.app = app;
-
-        this.srcDir = this.setViewsDirectory(this.app.get('path.views'));
+        this.srcDir = this.setSourceDirectory(app.get('path.views')).sourceDir();
     }
 
     /**
@@ -43,18 +35,28 @@ export class ViewFactory {
      *
      * @param request
      */
-    public createNewView(): View {
+    public createNewView(): IView {
         return new View(this.srcDir, this.data);
     }
 
     /**
-     * Sets the view files directory.
+     * Sets a new source directory. This will change the default application
+     * views directory.
      *
      * @param srcDir
      */
-    public setViewsDirectory(srcDir: string): string {
+    public setSourceDirectory(srcDir: string): IViewFactory {
         this.srcDir = '/' + Str.path(srcDir);
 
+        return this;
+    }
+
+    /**
+     * Returns default view source directory.
+     *
+     * @returns
+     */
+    public sourceDir(): string {
         return this.srcDir;
     }
 

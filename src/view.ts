@@ -2,8 +2,9 @@ import pug from 'pug';
 import path from 'path';
 import { Str } from '@rheas/support';
 import { AnyObject } from '@rheas/contracts';
+import { IView } from '@rheas/contracts/views';
 
-export class View {
+export class View implements IView {
     /**
      * Sets the data that has to be passed while parsing the
      * view template.
@@ -36,7 +37,7 @@ export class View {
      * @param dottedPath
      * @param data
      */
-    public render(path: string, data: AnyObject): string {
+    public render(path: string, data: AnyObject = {}): string {
         Object.keys(data).forEach((key) => this.with(key, data[key]));
 
         path = this.getViewFilePath(path);
@@ -45,9 +46,8 @@ export class View {
     }
 
     /**
-     * Gets the complete view file path from the views directory. The
-     * parameter file is a dotted file path without extension in the
-     * view directory.
+     * Gets the complete view file path from the views directory. The argument
+     * can be a regular file path with extension or a dotted file path.
      *
      * For example, to access index.pug, user just have to call view('index');
      * If index is in an email dir within the root views dir, user should call
@@ -55,7 +55,7 @@ export class View {
      *
      * @param dottedPath
      */
-    private getViewFilePath(dottedPath: string): string {
+    public getViewFilePath(dottedPath: string): string {
         dottedPath = Str.trimEnd(Str.dottedPath(dottedPath), '.pug');
 
         const fileSplit = dottedPath.split('.');
