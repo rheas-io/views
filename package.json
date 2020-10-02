@@ -15,6 +15,9 @@
     "renderer",
     "pug"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "tsc": "tsc",
     "test": "jest",
@@ -24,7 +27,13 @@
     "copypackage_dev": "cp -rf package.json build_dev",
     "build-dev": "tsc --outDir ./build_dev && npm run copypackage_dev"
   },
+  "dependencies": {
+    "pug": "^2.0.4"
+  },
   "devDependencies": {
+    "@rheas/contracts": "^0.0.1",
+    "@rheas/services": "^0.0.1",
+    "@rheas/support": "^0.0.2",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.2",
     "@types/pug": "^2.0.4",
@@ -41,8 +50,5 @@
   "bugs": {
     "url": "https://github.com/rheas-io/views/issues"
   },
-  "homepage": "https://github.com/rheas-io/views#readme",
-  "dependencies": {
-    "pug": "^2.0.4"
-  }
+  "homepage": "https://github.com/rheas-io/views#readme"
 }

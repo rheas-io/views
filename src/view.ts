@@ -1,6 +1,6 @@
 import pug from 'pug';
 import path from 'path';
-import { Str } from '@rheas/support';
+import { Str } from '@rheas/support/str';
 import { AnyObject } from '@rheas/contracts';
 import { IView } from '@rheas/contracts/views';
 

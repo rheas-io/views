@@ -1,5 +1,5 @@
 import { View } from './view';
-import { Str } from '@rheas/support';
+import { Str } from '@rheas/support/str';
 import { AnyObject } from '@rheas/contracts';
 import { IView, IViewFactory } from '@rheas/contracts/views';
 
