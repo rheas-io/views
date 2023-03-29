@@ -28,16 +28,16 @@
     "build-dev": "tsc --outDir ./build_dev && npm run copypackage_dev"
   },
   "dependencies": {
+    "@rheas/contracts": "^0.0.1",
+    "@rheas/support": "^0.0.2",
     "pug": "^3.0.1"
   },
   "devDependencies": {
-    "@rheas/contracts": "^0.0.1",
     "@rheas/services": "^0.0.1",
-    "@rheas/support": "^0.0.2",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.2",
     "@types/pug": "^2.0.4",
-    "jest": "^25.4.0",
+    "jest": "^29.5.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   },
