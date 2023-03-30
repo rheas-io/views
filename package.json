@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@rheas/contracts": "^0.0.11",
-    "@rheas/services": "^0.0.3",
-    "@rheas/support": "^0.0.8",
+    "@rheas/services": "^0.0.4",
+    "@rheas/support": "^0.0.9",
     "pug": "^3.0.2"
   },
   "devDependencies": {
