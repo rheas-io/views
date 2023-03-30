@@ -1,6 +1,6 @@
 {
   "name": "@rheas/views",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Rheas view renderer and a basic layout file for SPA",
   "main": "index.js",
   "keywords": [
