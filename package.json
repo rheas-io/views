@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "@rheas/contracts": "^0.0.11",
+    "@rheas/services": "^0.0.1",
     "@rheas/support": "^0.0.6",
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@rheas/services": "^0.0.1",
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.11",
     "@types/pug": "^2.0.6",
